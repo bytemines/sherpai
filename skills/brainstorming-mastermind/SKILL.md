@@ -1,227 +1,205 @@
 ---
 name: brainstorming-mastermind
-description: "Use for brainstorming sessions and before any creative work - creating features, building components, adding functionality, or modifying behavior. Explores user intent, requirements and design before implementation with systematic evaluation."
+description: "Use for brainstorming sessions and before any creative work - creating features, building components, adding functionality, or modifying behavior. Explores user intent, requirements and design before implementation."
 ---
 
 # Brainstorming for Technical & Product Development
 
-## Overview
+Visual-first, low-friction brainstorming. Show approaches with diagrams, compare side-by-side, decide fast.
 
-Turn ideas into fully formed designs through collaborative dialogue with systematic thinking. Generate diverse solutions, **critique approaches using multiple lenses**, and score options with clear trade-offs.
-
-**Core principle**: Critique the real problem directly — use analogies as one tool among several to reveal blind spots.
+**Core principle**: Critique the real problem directly — use analogies as one lens among several to reveal blind spots.
 
 ---
 
-## The Brainstorming Pipeline
+## The Pipeline
 
-### Phase 1: Understand the Idea
-
-- Check current project state first (files, docs, recent commits)
-- Ask questions to refine the idea:
-  - **Dependent questions** (answer affects next) → One at a time
-  - **Independent questions** (don't block each other) → Batch them
-- Focus on: purpose, constraints, success criteria, stakeholders
-
----
-
-### Phase 2: Generate & Explore (3-5 Approaches)
-
-#### For EACH approach:
-
-**Step 1: Describe the Approach**
-- What it is and why it could work (2-3 sentences)
-
-**Step 2: Find an Analogy** *(optional but powerful)*
-- "This is like [familiar system] because..."
-- Connects to something the user understands
-
-**Step 3: Critique the Approach**
-
-Critique the **real solution** using three lenses:
-
-| Lens | Question |
-|------|----------|
-| **Direct Analysis** | "What are the real trade-offs here?" |
-| **Analogy Lens** | "What do similar systems teach us?" |
-| **Domain Knowledge** | "What do I know about this space?" |
-
-**Critique questions with all three lenses:**
-
-| Question | Direct Analysis | Analogy Lens | Domain Knowledge |
-|----------|-----------------|--------------|------------------|
-| **Strengths** | What does this approach do well for OUR problem? | What works in similar systems? | What patterns succeed in this domain? |
-| **Weaknesses** | Where does this fall short for OUR needs? | What gaps do similar systems reveal? | What commonly fails here? |
-| **Assumptions** | What must be true for this to work? | What assumptions exist in analogous systems? | What do experts assume in this space? |
-| **Failure Modes** | How could this break in OUR context? | How have similar systems failed? | What are known failure patterns? |
-| **Unique Aspects** | What's different about THIS problem? | Where does the analogy break? | What makes our situation special? |
-
-**Key insight**: The analogy is a **lens, not the target**. Always bring critique back to the real problem.
-
-#### Gather information by type:
-
-| Info Type | Question | Action |
-|-----------|----------|--------|
-| **Procedural** | "How to do it?" | Think through actual execution steps |
-| **Conceptual** | "What is it?" | Map connections & big picture |
-| **Evidence** | "What proves it?" | Store concrete examples for later |
-
----
-
-### Phase 3: Score, Hybrid & Select
-
-#### Score each approach (1-10) on relevant dimensions:
-
-**Always include:**
-- **ROI/Value**: Benefit vs investment (time, complexity, resources)
-- **YAGNI/Simplicity**: How much unnecessary complexity does this add?
-
-**Include when relevant:**
-- **SOLID Principles**: For code architecture decisions
-- **Security**: When risk exposure matters (lower priority otherwise)
-
-**Pick 3-4 additional from:**
-- **Technical Feasibility**: Can we build this with current skills/tools?
-- **User Experience**: How well does this solve the user's real problem?
-- **Maintainability**: How easy to debug, extend, and modify?
-- **Performance**: Speed, scalability, resource usage
-- **Time to Market**: How quickly can we deliver value?
-- **Integration**: How well does this fit with existing systems?
-- **Team Capability**: Do we have the skills to execute?
-
-#### Present scores:
-
-```markdown
-| Approach | ROI | Simplicity | [Dim 3] | [Dim 4] | [Dim 5] | **Total** |
-|----------|-----|------------|---------|---------|---------|-----------|
-| A: Name  | 7   | 8          | 6       | 7       | 8       | **7.2**   |
-| B: Name  | 9   | 6          | 8       | 9       | 8       | **8.0**   |
-| C: Name  | 5   | 9          | 5       | 6       | 7       | **6.4**   |
 ```
-
-#### Consider Hybrid Approach:
-
-After scoring, look for opportunities to combine the best parts.
-
-**Rules:**
-- Only propose hybrid if it **beats the top score**
-- If no hybrid beats the winner → skip this step
-- Score the hybrid using the same dimensions
-
-#### Adjustment Loop:
-- If adjustments needed → refine and re-score
-- Repeat until confident in recommendation
-
-#### Recommend:
-> "I suggest [Approach X] because [reason backed by scores and critique insights]"
-
----
-
-### Phase 4: Present Final Design
-
-#### 1. Architecture Overview
-- ASCII diagram showing the solution structure
-- **Reference**: Use [diagram-reference.md](diagram-reference.md) for diagram patterns and construction
-
-#### 2. Present Design in Sections
-- Break into 200-300 word sections
-- Cover: architecture, components, data flow, error handling, testing
-- **Validate each section** with user before continuing
-- Be ready to adjust
-
-#### 3. Final Summary
-
-```markdown
-## Recommendation: [Chosen Approach]
-
-**Score: X.X/10**
-
-**Why this wins**: [Explain using insights from critique — both direct analysis and analogy]
-
-**Trade-offs accepted**: [What we're consciously giving up]
-
-**Reconsider if**: [Specific conditions that would change this decision]
+┌─────────────┐      ┌─────────────────────┐      ┌─────────────┐
+│  UNDERSTAND │ ───▶ │  EXPLORE & COMPARE  │ ───▶ │   DESIGN    │
+│  (clarify)  │      │  (options + scores) │      │  (build it) │
+└─────────────┘      └─────────────────────┘      └─────────────┘
 ```
 
 ---
 
-### After the Design
+## Phase 1: Understand
 
-**Documentation:**
-- Write to `docs/plans/YYYY-MM-DD-<topic>-design.md`
-- Include: problem context, approaches considered, scores, reasoning
-- Commit to git
+**Goal**: Get clarity fast.
 
-**Implementation (if continuing):**
-- Ask: "Ready to create implementation plan?"
-- Break into phases and milestones
+1. Check project state (files, docs, recent commits)
+2. Ask questions:
+   - **Dependent** (answer affects next) → one at a time
+   - **Independent** (don't block each other) → batch them
+3. Confirm: purpose, constraints, who it's for
 
----
-
-## Examples
-
-### Example 1: Caching System Critique
-
-**Approach**: Add Redis caching layer for API responses
-
-**Analogy**: "This is like a restaurant's prep station — pre-preparing common items instead of cooking from scratch each time."
-
-**Critique using all three lenses:**
-
-| Question | Direct Analysis | Analogy Lens | Domain Knowledge |
-|----------|-----------------|--------------|------------------|
-| **Strengths** | Reduces DB load, faster responses for repeated queries | Prep stations handle rush hour well | Redis is battle-tested, sub-ms latency |
-| **Weaknesses** | Adds infrastructure complexity, cache invalidation is hard | Prep food gets stale | Cache stampede on cold start is a known issue |
-| **Assumptions** | Access patterns are predictable, stale data is acceptable briefly | Assumes we know "commonly ordered" items | Assumes Redis cluster won't be a bottleneck |
-| **Failure Modes** | Cache corruption, memory exhaustion, thundering herd | If prep station fails, kitchen slows but works | Redis failover can cause brief outages |
-| **Unique Aspects** | Our data has complex relationships (unlike simple prep items) | Food spoils physically; our data might become logically invalid | We need event-driven invalidation, not just TTL |
-
-**Insight from critique**: The analogy reveals we need graceful degradation (kitchen still works without prep), but breaks down for invalidation — we need explicit event-driven cache busting, not just time-based expiry.
+*Do not proceed to Phase 2 until you have complete clarity on goals, constraints, and requirements.*
 
 ---
 
-### Example 2: Hybrid Decision
+## Phase 2: Explore & Compare
 
-**Initial Scores:**
-| Approach | ROI | Simplicity | Performance | **Total** |
-|----------|-----|------------|-------------|-----------|
-| A: React SPA | 8 | 6 | 9 | **7.7** |
-| B: Server-rendered | 7 | 9 | 6 | **7.3** |
-| C: Static site | 6 | 8 | 8 | **7.3** |
+**Goal**: Show 3-4 options visually, score them, user picks one.
 
-**Hybrid consideration**: "What if we combine A's interactivity with B's initial load? → Next.js"
+### For EACH Approach (keep it tight):
 
-**Hybrid Score:**
-| Approach | ROI | Simplicity | Performance | **Total** |
-|----------|-----|------------|-------------|-----------|
-| **Hybrid: Next.js** | 9 | 7 | 9 | **8.3** |
+```
+┌─────────────────────────────────────────────────────────┐
+│  APPROACH NAME                                          │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│  [Simple diagram - show the core structure]             │
+│                                                         │
+├─────────────────────────────────────────────────────────┤
+│  What: 1-2 sentences describing the approach            │
+│  Why it might win: 1 sentence                           │
+│  Risk: 1 sentence                                       │
+└─────────────────────────────────────────────────────────┘
+```
 
-**Result**: Hybrid beats top (8.3 > 7.7) → **Propose hybrid**
+*See [diagram-reference.md](diagram-reference.md) for diagram patterns*
+
+### Then ONE Score Table:
+
+| Approach | ROI | Simple | [Dim 3] | [Dim 4] | Risk | Score |
+|----------|-----|--------|---------|---------|------|-------|
+| A: Name  | 8   | 7      | 8       | 7       | Med  | 7.7   |
+| B: Name  | 6   | 9      | 5       | 8       | Low  | 6.7   |
+| C: Name  | 7   | 5      | 9       | 6       | High | 7.0   |
+
+**Scoring dimensions:**
+- **Always**: ROI/Value, YAGNI/Simplicity
+- **When relevant**: SOLID Principles, Security
+- **Pick 2-4 more**: Choose dimensions that matter most for THIS problem.
+
+### Then ONE Comparative Analysis:
+
+Critique all approaches together using three lenses:
+- **Direct Analysis** — What are the real trade-offs?
+- **Analogy Lens** — What do similar systems teach us?
+- **Domain Knowledge** — What patterns succeed/fail here?
+
+| Dimension | A: Name | B: Name | C: Name |
+|-----------|---------|---------|---------|
+| **Strengths** | ... | ... | ... |
+| **Weaknesses** | ... | ... | ... |
+| **Assumptions** | ... | ... | ... |
+| **Fails when** | ... | ... | ... |
+
+### Hybrid Check:
+- Can we combine the best parts?
+- If yes → **add hybrid to both tables** and score it
+- Only recommend hybrid if it **beats top score**
+- If no good hybrid → skip
+
+### Recommend:
+> "**Suggest [X]** because [1-2 sentences backed by scores]"
+
+*User approves or requests adjustments. Loop until approved.*
 
 ---
 
-## Key Principles
+## Phase 3: Design
 
-### Exploration
-- **Questions**: Dependent → one at a time | Independent → batch
-- **Critique the approach, not just the analogy** — analogy is a lens
-- **Three lenses**: Direct analysis + Analogy + Domain knowledge
-- **Think through execution** — work through actual steps
-- **Challenge assumptions** — question what seems "obvious"
+**Goal**: Present the approved approach with enough detail to build.
 
-### Evaluation
-- **Always ROI and YAGNI** — these matter for every decision
-- **SOLID when relevant** — for architecture decisions
-- **Security when required** — lower priority unless context demands
-- **Hybrid only if it wins** — don't propose if it doesn't beat top score
-- **Ground in evidence** — concrete examples, not generic reasoning
+### 1. Complete Architecture Diagram
 
-### Quality
+Expand from the simple diagram into full component detail.
+
+*See [diagram-reference.md](diagram-reference.md) for patterns*
+
+### 2. Key Sections (validate each with user):
+
+- **Components**: What are the parts?
+- **Data Flow**: How does information move?
+- **Integrations**: What external systems?
+- **Error Handling**: What can go wrong?
+
+*200-300 words per section. Check with user before continuing.*
+
+### 3. Summary Card:
+
+```
+┌─────────────────────────────────────────────────────────┐
+│  RECOMMENDATION: [Approach Name]          Score: X.X/10 │
+├─────────────────────────────────────────────────────────┤
+│  Why: [1-2 sentences]                                   │
+│  Trade-offs: [What we're giving up]                     │
+│  Reconsider if: [Conditions that change this]           │
+└─────────────────────────────────────────────────────────┘
+```
+
+---
+
+## After Design
+
+- **Document**: Write to `docs/plans/YYYY-MM-DD-<topic>-design.md`
+- **Build**: Ask "Ready to build?" → break into phases and milestones
+
+---
+
+## Example: Caching Decision
+
+### Approaches:
+
+**A: Redis Cache**
+```
+Client ──▶ Cache ──▶ DB
+              └─miss─▶
+```
+What: Add Redis layer for API responses
+Win: Sub-ms reads, proven tech
+Risk: Cache invalidation complexity
+
+**B: In-Memory**
+```
+Client ──▶ [App Memory] ──▶ DB
+```
+What: Store in application memory
+Win: No infrastructure, simple
+Risk: Lost on restart, no sharing
+
+**C: CDN Edge**
+```
+Client ──▶ CDN ──▶ Origin
+```
+What: Cache at CDN level
+Win: Global, zero app changes
+Risk: Stale content, less control
+
+### Score Table:
+
+| Approach | ROI | Simple | Perf | Risk | Score |
+|----------|-----|--------|------|------|-------|
+| A: Redis | 8 | 6 | 9 | Med | 7.7 |
+| B: Memory | 6 | 9 | 6 | Low | 7.0 |
+| C: CDN | 7 | 8 | 8 | Med | 7.7 |
+| **Hybrid: Redis + CDN** | 9 | 5 | 10 | Med | **8.0** |
+
+### Comparative Analysis:
+
+| Dimension | Redis | Memory | CDN | Hybrid |
+|-----------|-------|--------|-----|--------|
+| Strengths | Fast, scalable | No infra | Global reach | Best of both |
+| Weaknesses | Ops overhead | Not shared | Stale content | Complex setup |
+| Assumptions | Redis available | Single instance ok | Static content | Team can manage both |
+| Fails when | Redis down | App restarts | Need fresh data | Either layer fails |
+
+**Recommend**: Hybrid (Redis + CDN) — CDN for static/public, Redis for dynamic/auth. Best performance, acceptable complexity.
+
+---
+
+## Principles
+
+- **Visual first** — diagrams before paragraphs
+- **Compare, don't repeat** — one table across approaches, not per-approach
+- **Three lenses** — critique using direct analysis, analogies, and domain knowledge
+- **Score to decide** — numbers force clarity
+- **Hybrid only if better** — don't add complexity for its own sake
+- **User decides** — LLM recommends, user approves
 - **Validate incrementally** — check each section with user
-- **Adjust and re-score** — update scores when things change
-- **Document reasoning** — future you needs to understand "why"
-- **YAGNI ruthlessly** — remove unnecessary complexity
+- **YAGNI** — remove unnecessary complexity
 
 ---
 
-*Transform ideas into well-reasoned designs by critiquing approaches directly, using analogies as one lens among several, and scoring trade-offs systematically.*
+*Turn ideas into decisions with diagrams, scores, and clear trade-offs.*

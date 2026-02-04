@@ -100,102 +100,94 @@ project/
 
 ---
 
-## Brainstorming Pipeline Visual
+## Brainstorming Pipeline Visual (3 Phases)
+
+```
+┌─────────────┐      ┌─────────────────────┐      ┌─────────────┐
+│  UNDERSTAND │ ───▶ │  EXPLORE & COMPARE  │ ───▶ │   DESIGN    │
+│  (clarify)  │      │  (options + scores) │      │  (build it) │
+└─────────────┘      └─────────────────────┘      └─────────────┘
+```
+
+### Detailed View
 
 ```
 ┌──────────────────────────────────────┐
 │  PHASE 1: UNDERSTAND                 │
 │  • Check project state               │
 │  • Ask questions (dependent/batch)   │
-│  • Clarify: purpose, constraints     │
+│  • Confirm: purpose, constraints     │
 └──────────────────┬───────────────────┘
                    │
                    ▼
 ┌──────────────────────────────────────┐
-│  PHASE 2: GENERATE & EXPLORE         │
+│  PHASE 2: EXPLORE & COMPARE          │
 │  For EACH approach:                  │
-│  1. Describe (what, why)             │
-│  2. Find analogy (optional)          │
-│  3. Critique with 3 lenses:          │
-│     Direct | Analogy | Domain        │
+│  • Mini diagram + What/Win/Risk      │
+│  Then ONE comparison table:          │
+│  • Scores (ROI, Simple, UX, etc.)    │
+│  • Strengths/Weaknesses/Fails when   │
+│  • Add hybrid if it beats top score  │
+│  • Recommend winner                  │
 └──────────────────┬───────────────────┘
                    │
                    ▼
 ┌──────────────────────────────────────┐
-│  PHASE 3: SCORE & SELECT             │
-│  • Score each (ROI, Simplicity, +3)  │
-│  • Consider hybrid if it beats top   │
-│  • Adjust and re-score if needed     │
-│  • Recommend with reasoning          │
-└──────────────────┬───────────────────┘
-                   │
-                   ▼
-┌──────────────────────────────────────┐
-│  PHASE 4: PRESENT FINAL DESIGN       │
-│  • ASCII diagram (architecture)      │
-│  • Present in sections (200-300w)    │
-│  • Validate each section             │
-│  • Final summary with trade-offs     │
+│  PHASE 3: DESIGN                     │
+│  • Full architecture diagram         │
+│  • Components, Data Flow, Errors     │
+│  • Validate each section with user   │
+│  • Summary card with trade-offs      │
 └──────────────────────────────────────┘
-```
-
----
-
-## Three-Lens Critique Model
-
-```
-              ┌─────────────────────────────┐
-              │   CRITIQUE THE APPROACH     │
-              │      (the real problem)     │
-              └──────────────┬──────────────┘
-                             │
-     ┌───────────────────────┼───────────────────────┐
-     │                       │                       │
-     ▼                       ▼                       ▼
-┌─────────────┐        ┌─────────────┐        ┌─────────────┐
-│   DIRECT    │        │   ANALOGY   │        │   DOMAIN    │
-│  ANALYSIS   │        │    LENS     │        │  KNOWLEDGE  │
-│             │        │             │        │             │
-│ "What are   │        │ "What do    │        │ "What do I  │
-│  the real   │        │  similar    │        │  know about │
-│  trade-offs │        │  systems    │        │  this       │
-│  here?"     │        │  teach us?" │        │  space?"    │
-└─────────────┘        └─────────────┘        └─────────────┘
 ```
 
 ---
 
 ## Mermaid Diagrams
 
-### Main Workflow (Horizontal)
+### Main Workflow (3 Phases)
 
 ```mermaid
 flowchart LR
-    subgraph P1["UNDERSTAND"]
-        P1A["Check state"] --> P1B["Ask questions"] --> P1C["Clarify goals"]
+    subgraph P1["1: UNDERSTAND"]
+        P1A["Check state"] --> P1B["Ask questions"] --> P1C["Confirm goals"]
     end
-    subgraph P2["EXPLORE"]
-        P2A["Generate approaches"] --> P2B["Critique with 3 lenses"]
+    subgraph P2["2: EXPLORE & COMPARE"]
+        P2A["Show approaches<br/>with diagrams"] --> P2B["Score table"]
+        P2B --> P2C{"Hybrid?"}
+        P2C -->|beats top| P2D["Add to table"]
+        P2C -->|no| P2E["Skip"]
+        P2D --> P2F["Recommend"]
+        P2E --> P2F
     end
-    subgraph P3["SCORE & SELECT"]
-        P3A["Score each"] --> P3B{"Hybrid wins?"}
-        P3B -->|Yes| P3C["Propose"]
-        P3B -->|No| P3D["Keep best"]
+    subgraph P3["3: DESIGN"]
+        P3A["Architecture"] --> P3B["Sections"] --> P3C{"OK?"}
+        P3C -->|adjust| P3B
+        P3C -->|yes| P3D["Summary card"]
     end
-    subgraph P4["PRESENT"]
-        P4A["Diagram"] --> P4B["Sections"] --> P4C{"OK?"}
-        P4C -->|No| P4B
-    end
-    P1 ==> P2 ==> P3 ==> P4
+    P1 ==> P2 ==> P3
 ```
 
 ### Quick Reference
 
 ```mermaid
 flowchart LR
-    A["UNDERSTAND"] ==> B["EXPLORE<br/>3 lenses"] ==> C["SCORE<br/>+ hybrid?"] ==> D["PRESENT"] ==> E["SAVE"]
-    C -.->|adjust| C
-    D -.->|iterate| D
+    A["UNDERSTAND"] ==> B["EXPLORE & COMPARE<br/>diagrams + scores + hybrid"] ==> C["DESIGN<br/>architecture + sections"]
+    B -.->|hybrid?| B
+    C -.->|iterate| C
+```
+
+### Approach Card Pattern
+
+```mermaid
+flowchart TB
+    subgraph card["APPROACH: Name"]
+        direction TB
+        diagram["📊 Mini Diagram"]
+        what["What: description"]
+        win["Win: why it might work"]
+        risk["Risk: main concern"]
+    end
 ```
 
 ---
