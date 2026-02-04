@@ -1,6 +1,6 @@
 ---
 name: brainstorming-mastermind
-description: "Use for brainstorming sessions and before any creative work - creating features, building components, adding functionality, or modifying behavior. Explores user intent, requirements and design before implementation."
+description: "Use when starting creative work, designing features, planning architecture, or facing decisions with multiple valid approaches. Also use when requirements are unclear or you're tempted to jump straight to implementation."
 ---
 
 # Brainstorming for Technical & Product Development
@@ -8,6 +8,39 @@ description: "Use for brainstorming sessions and before any creative work - crea
 Visual-first, low-friction brainstorming. Show approaches with diagrams, compare side-by-side, decide fast.
 
 **Core principle**: Critique the real problem directly — use analogies as one lens among several to reveal blind spots.
+
+---
+
+## When to Use
+
+**Symptoms that trigger this skill:**
+- "Let's build X" or "I need to implement Y"
+- Multiple valid approaches exist (or might exist)
+- Requirements feel unclear or incomplete
+- You're tempted to start coding immediately
+- Design decisions that affect architecture
+- Team disagreement on approach
+
+**Do NOT use for:**
+- Bug fixes with obvious solutions
+- Trivial changes (typos, config tweaks)
+- Tasks where the approach is explicitly specified
+
+---
+
+## Red Flags — STOP If You Think These
+
+| Thought | Reality |
+|---------|---------|
+| "This is simple, I'll just build it" | Simple-seeming tasks often have hidden complexity. Run Phase 1. |
+| "I already know the best approach" | Your assumption may be wrong. Show 3 options anyway. |
+| "User wants it fast, skip the process" | Fast ≠ skip. Compress phases, don't eliminate them. |
+| "Diagrams aren't needed here" | Visual-first is core. Always show diagrams. |
+| "The answer is obvious" | If obvious, the score table will prove it. Don't assume. |
+| "I'll brainstorm in my head" | Externalize it. User can't see your thinking. |
+| "One option is clearly best" | Show the comparison. Let the scores speak. |
+
+**If you catch yourself thinking any of these: STOP. Follow the pipeline.**
 
 ---
 
@@ -95,6 +128,17 @@ Critique all approaches together using three lenses:
 > "**Suggest [X]** because [1-2 sentences backed by scores]"
 
 *User approves or requests adjustments. Loop until approved.*
+
+### Before Design — Clarify the Chosen Approach:
+
+Once user approves an approach, check for **approach-specific questions** not yet answered:
+- Implementation details unique to this option
+- Integration points that only matter for this approach
+- Constraints that become relevant now
+
+> "Before I design [X], a few quick questions specific to this approach: ..."
+
+**If no questions remain → proceed directly to Phase 3.** Don't invent questions or add friction.
 
 ---
 
@@ -199,6 +243,21 @@ Risk: Stale content, less control
 - **User decides** — LLM recommends, user approves
 - **Validate incrementally** — check each section with user
 - **YAGNI** — remove unnecessary complexity
+
+---
+
+## Common Mistakes
+
+| Mistake | Fix |
+|---------|-----|
+| Skipping Phase 1 clarification | Always ask questions first. Even "obvious" requirements have hidden assumptions. |
+| Text-only approach descriptions | Every approach needs a mini diagram. No exceptions. |
+| Separate analysis per approach | Use ONE comparison table. Side-by-side reveals trade-offs. |
+| Forcing hybrid when it doesn't fit | Only propose hybrid if it actually beats top score. Sometimes simple wins. |
+| Proceeding without user approval | Phase 2 ends with "Recommend X" and waiting. User must approve before Phase 3. |
+| Over-engineering the design | YAGNI applies. Design what's needed, not what might be needed. |
+| Ignoring team constraints | "Best" technically ≠ best for this team. Include capability in scoring. |
+| Long paragraphs instead of diagrams | If you're writing >3 sentences, you probably need a diagram instead. |
 
 ---
 

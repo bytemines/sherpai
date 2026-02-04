@@ -9,24 +9,26 @@ When you start building something, SherpAI doesn't let you jump into code. It st
 ```mermaid
 flowchart LR
     subgraph P1["1. UNDERSTAND"]
-        A1[Check context] --> A2[Ask questions] --> A3[Clarify goals]
+        A1[Check context] --> A2[Ask questions] --> A3[Confirm goals]
     end
 
-    subgraph P2["2. EXPLORE"]
-        B1[Generate 3-5 approaches] --> B2[Critique with 3 lenses]
+    subgraph P2["2. EXPLORE & COMPARE"]
+        B1[Show 3-4 approaches<br/>with diagrams] --> B2[Score table]
+        B2 --> B3{Hybrid?}
+        B3 -->|beats top| B4[Add hybrid]
+        B3 -->|no| B5[Skip]
+        B4 --> B6[Recommend]
+        B5 --> B6
+        B6 --> B7{Approved?}
+        B7 -->|no| B1
+        B7 -->|yes| B8[Clarify chosen]
     end
 
-    subgraph P3["3. SCORE"]
-        C1[Rate each approach] --> C2{Hybrid wins?}
-        C2 -->|Yes| C3[Propose hybrid]
-        C2 -->|No| C4[Keep best]
+    subgraph P3["3. DESIGN"]
+        C1[Architecture] --> C2[Validate sections] --> C3[Summary card]
     end
 
-    subgraph P4["4. PRESENT"]
-        D1[Architecture diagram] --> D2[Validate sections] --> D3[Final summary]
-    end
-
-    P1 --> P2 --> P3 --> P4
+    P1 --> P2 --> P3
 ```
 
 **The Three-Lens Critique:**

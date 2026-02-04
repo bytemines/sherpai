@@ -450,11 +450,16 @@ Document any rationalizations and add counters to skill.
 
 | Excuse | Counter |
 |--------|---------|
-| "This is a simple decision" | Simple decisions still benefit from structured comparison |
-| "User wants quick answer" | Quick ≠ skipping structure. Compress, don't skip. |
-| "Diagrams aren't necessary here" | Visual-first is core principle. Always show diagrams. |
-| "The answer is obvious" | If obvious, table will show it. Don't assume. |
-| TBD from testing... | TBD... |
+| "This is a simple decision" | Simple decisions still benefit from structured comparison. Run Phase 1. |
+| "User wants quick answer" | Quick ≠ skipping structure. Compress phases, don't eliminate them. |
+| "Diagrams aren't necessary here" | Visual-first is core principle. Every approach needs a diagram. No exceptions. |
+| "The answer is obvious" | If obvious, the score table will prove it. Don't assume. |
+| "I already know the best approach" | Your assumption may be wrong. Show 3 options anyway. |
+| "I'll brainstorm in my head" | Externalize it. User can't see your thinking. |
+| "One option is clearly best" | Show the comparison. Let the scores speak. |
+| "This team won't care about options" | User decides. Your job is to present choices, not make them. |
+| "Hybrid is always better" | Only propose hybrid if it actually beats top score. Sometimes simple wins. |
+| "We don't have time for Phase 1" | Skipping Phase 1 causes more rework later. Compress, don't skip. |
 
 ---
 
