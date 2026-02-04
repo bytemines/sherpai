@@ -1,0 +1,12 @@
+{
+  "name": "sherpai",
+  "description": "AI-powered brainstorming skill for technical and product development",
+  "version": "1.0.0",
+  "author": {
+    "name": "Conrado Mateu"
+  },
+  "homepage": "https://github.com/bytemines/sherpai",
+  "repository": "https://github.com/bytemines/sherpai",
+  "license": "MIT",
+  "keywords": ["brainstorming", "design", "planning", "architecture", "product-development"]
+}
