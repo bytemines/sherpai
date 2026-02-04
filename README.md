@@ -7,12 +7,14 @@ AI-powered brainstorming skill that turns rough ideas into well-reasoned designs
 When you start building something, SherpAI doesn't let you jump into code. It steps back, asks what you're really trying to do, explores multiple approaches with systematic critique, and presents a validated design.
 
 ```mermaid
-flowchart LR
+flowchart TB
     subgraph P1["1. UNDERSTAND"]
+        direction TB
         A1[Check context] --> A2[Ask questions] --> A3[Confirm goals]
     end
 
     subgraph P2["2. EXPLORE & COMPARE"]
+        direction TB
         B1[Show 3-4 approaches<br/>with diagrams] --> B2[Score table]
         B2 --> B3{Hybrid?}
         B3 -->|beats top| B4[Add hybrid]
@@ -25,6 +27,7 @@ flowchart LR
     end
 
     subgraph P3["3. DESIGN"]
+        direction TB
         C1[Architecture] --> C2[Validate sections] --> C3[Summary card]
     end
 
