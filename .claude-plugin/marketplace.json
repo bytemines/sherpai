@@ -1,0 +1,28 @@
+{
+  "name": "sherpai-marketplace",
+  "owner": {
+    "name": "Conrado Mateu",
+    "email": "conrado@bytemines.com"
+  },
+  "metadata": {
+    "description": "AI-powered brainstorming skills that turn rough ideas into well-reasoned designs",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "sherpai",
+      "source": "./",
+      "description": "Visual-first brainstorming for technical and product development. Shows 3-4 approaches with diagrams, scores them side-by-side, and guides you to validated designs.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Conrado Mateu"
+      },
+      "homepage": "https://github.com/bytemines/sherpai",
+      "repository": "https://github.com/bytemines/sherpai",
+      "license": "MIT",
+      "category": "productivity",
+      "tags": ["brainstorming", "design", "planning", "architecture", "product-development"],
+      "keywords": ["brainstorming", "design", "planning", "architecture", "product-development"]
+    }
+  ]
+}
