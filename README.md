@@ -7,31 +7,61 @@ AI-powered brainstorming skill that turns rough ideas into well-reasoned designs
 When you start building something, SherpAI doesn't let you jump into code. It steps back, asks what you're really trying to do, explores multiple approaches with systematic critique, and presents a validated design.
 
 ```mermaid
-flowchart TB
-    subgraph P1["1. UNDERSTAND"]
+flowchart LR
+    A((💭 Idea)) --> P1
+
+    subgraph P1["1️⃣ UNDERSTAND"]
         direction TB
-        A1[Check context] --> A2[Ask questions] --> A3[Confirm goals]
+        B["📂 Check project state"]
+        B --> C["❓ Ask questions"]
+        C --> D["🔗 Dependent<br/><i>one at a time</i>"]
+        C --> E["📦 Independent<br/><i>batch them</i>"]
+        D --> F["🎯 Confirm goals"]
+        E --> F
     end
 
-    subgraph P2["2. EXPLORE & COMPARE"]
+    P1 --> P2
+
+    subgraph P2["2️⃣ EXPLORE & COMPARE"]
         direction TB
-        B1[Show 3-4 approaches<br/>with diagrams] --> B2[Score table]
-        B2 --> B3{Hybrid?}
-        B3 -->|beats top| B4[Add hybrid]
-        B3 -->|no| B5[Skip]
-        B4 --> B6[Recommend]
-        B5 --> B6
-        B6 --> B7{Approved?}
-        B7 -->|no| B1
-        B7 -->|yes| B8[Clarify chosen]
+        G["💡 3-4 Approaches"]
+        H["✏️ Diagram + What/Win/Risk"]
+        I["📊 Score table"]
+        J["🔀 Hybrid check"]
+        K["💬 Recommend"]
+        G --> H --> I --> J --> K
     end
 
-    subgraph P3["3. DESIGN"]
+    P2 --> V1["👤 Approve?"]
+    V1 -->|"🔄 Adjust"| P2
+    V1 -->|"✅ Yes"| CL["🔍 Clarify chosen"]
+
+    CL --> P3
+
+    subgraph P3["3️⃣ DESIGN"]
         direction TB
-        C1[Architecture] --> C2[Validate sections] --> C3[Summary card]
+        L["🏗️ Architecture diagram"]
+        M["📑 Components & Data Flow"]
+        N["✅ Validate sections"]
+        O["📋 Summary card"]
+        L --> M --> N --> O
     end
 
-    P1 --> P2 --> P3
+    P3 --> P["🚀 Build"]
+
+    classDef phase1 fill:#e3f2fd,stroke:#1565c0,stroke-width:2px
+    classDef phase2 fill:#fff3e0,stroke:#ef6c00,stroke-width:2px
+    classDef phase3 fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
+    classDef userCheck fill:#fff9c4,stroke:#f9a825,stroke-width:2px
+    classDef endpoint fill:#c8e6c9,stroke:#2e7d32,stroke-width:3px
+    classDef clarify fill:#e8f5e9,stroke:#43a047,stroke-width:2px
+
+    class B,C,D,E,F phase1
+    class G,H,I,J,K phase2
+    class L,M,N,O phase3
+    class V1 userCheck
+    class A,P endpoint
+    class CL clarify
 ```
 
 **The Three-Lens Critique:**
