@@ -34,9 +34,7 @@ flowchart LR
 
     P2 --> V1["👤 Approve?"]
     V1 -->|"🔄 Adjust"| P2
-    V1 -->|"✅ Yes"| CL["🔍 Clarify chosen"]
-
-    CL --> P3
+    V1 -->|"✅ Yes"| P3
 
     subgraph P3["3️⃣ DESIGN"]
         direction TB
@@ -49,19 +47,17 @@ flowchart LR
 
     P3 --> P["🚀 Build"]
 
-    classDef phase1 fill:#e3f2fd,stroke:#1565c0,stroke-width:2px
-    classDef phase2 fill:#fff3e0,stroke:#ef6c00,stroke-width:2px
-    classDef phase3 fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
-    classDef userCheck fill:#fff9c4,stroke:#f9a825,stroke-width:2px
-    classDef endpoint fill:#c8e6c9,stroke:#2e7d32,stroke-width:3px
-    classDef clarify fill:#e8f5e9,stroke:#43a047,stroke-width:2px
+    classDef phase1 fill:#e3f2fd,stroke:#1565c0,stroke-width:2px,color:#000
+    classDef phase2 fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,color:#000
+    classDef phase3 fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px,color:#000
+    classDef userCheck fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#000
+    classDef endpoint fill:#c8e6c9,stroke:#2e7d32,stroke-width:3px,color:#000
 
     class B,C,D,E,F phase1
     class G,H,I,J,K phase2
     class L,M,N,O phase3
     class V1 userCheck
     class A,P endpoint
-    class CL clarify
 ```
 
 **The Three-Lens Critique:**
