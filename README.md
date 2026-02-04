@@ -38,10 +38,18 @@ flowchart LR
 
 ## Installation
 
-### Claude Code
+### Claude Code (Recommended)
 
 ```bash
-# Clone to plugins directory
+# Add marketplace and install
+/plugin marketplace add bytemines/sherpai
+/plugin install sherpai@sherpai-marketplace
+```
+
+### Claude Code (Alternative)
+
+```bash
+# Direct clone to plugins directory
 git clone https://github.com/bytemines/sherpai.git ~/.claude/plugins/sherpai
 ```
 
