@@ -1,8 +1,6 @@
-# Sherpai
+# Sherpai 🏔️ - Don't free-solo your code. Let Sherpai guide the climb.
 
 ![Sherpai Banner](assets/sherpai.JPEG)
-
-**Don't free-solo your next adventure.**
 
 Some people climb 3,000 feet with no rope. They've also spent years memorizing every hold. You're not them. Neither am I.
 
