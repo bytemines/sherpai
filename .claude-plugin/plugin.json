@@ -1,7 +1,7 @@
 {
   "name": "sherpai",
-  "description": "AI-powered brainstorming skill for technical and product development",
-  "version": "1.0.0",
+  "description": "Don't free-solo your code. Let Sherpai guide the climb.",
+  "version": "0.1.0",
   "author": {
     "name": "Conrado Mateu"
   },

@@ -5,15 +5,15 @@
     "email": "hello@bytemines.io"
   },
   "metadata": {
-    "description": "AI-powered brainstorming skills that turn rough ideas into well-reasoned designs",
-    "version": "1.0.0"
+    "description": "Don't free-solo your code. Let Sherpai guide the climb.",
+    "version": "0.1.0"
   },
   "plugins": [
     {
       "name": "sherpai",
       "source": "./",
-      "description": "Visual-first brainstorming for technical and product development. Shows 3-4 approaches with diagrams, scores them side-by-side, and guides you to validated designs.",
-      "version": "1.0.0",
+      "description": "Don't free-solo your code. Let Sherpai guide the climb.",
+      "version": "0.1.0",
       "author": {
         "name": "Conrado Mateu"
       },

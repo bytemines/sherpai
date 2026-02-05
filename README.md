@@ -1,10 +1,20 @@
-# SherpAI
+# Sherpai
 
-AI-powered brainstorming skill that turns rough ideas into well-reasoned designs through systematic exploration.
+![Sherpai Banner](assets/sherpai.JPEG)
 
-## How it works
+**Don't free-solo your next adventure.**
 
-When you start building something, SherpAI doesn't let you jump into code. It steps back, asks what you're really trying to do, explores multiple approaches with systematic critique, and presents a validated design.
+Some people climb 3,000 feet with no rope. They've also spent years memorizing every hold. You're not them. Neither am I.
+
+Sherpai climbs with you in Claude Code, Codex, Gemini CLI, and beyond. It guides you through the messy parts: design, architecture, validation, planning. Step by step. No shortcuts to regret on the descent.
+
+It's seen the summit. It's seen the falls.
+
+## Current Skills
+
+### Brainstorming Mastermind
+
+The flagship skill. When you start building something, SherpAI doesn't let you jump into code. It steps back, asks what you're really trying to do, explores multiple approaches with systematic critique, and presents a validated design.
 
 ```mermaid
 flowchart LR
@@ -34,7 +44,7 @@ flowchart LR
 
     P2 --> V1["👤 Approve?"]
     V1 -->|"🔄 Adjust"| P2
-    V1 -->|"✅ Yes"| P3
+    V1 --> P3
 
     subgraph P3["3️⃣ DESIGN"]
         direction TB
@@ -96,7 +106,7 @@ Fetch and follow instructions from https://raw.githubusercontent.com/bytemines/s
 
 ## Usage
 
-The skill triggers automatically when you:
+The brainstorming skill triggers automatically when you:
 - Say "brainstorming" or "let's brainstorm"
 - Start creative work (features, components, architecture)
 - Ask to design or plan something
