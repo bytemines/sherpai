@@ -39,6 +39,8 @@ Visual-first, low-friction brainstorming. Show approaches with diagrams, compare
 | "The answer is obvious" | If obvious, the score table will prove it. Don't assume. |
 | "I'll brainstorm in my head" | Externalize it. User can't see your thinking. |
 | "One option is clearly best" | Show the comparison. Let the scores speak. |
+| "The user gave enough context, no questions needed" | Users leave out constraints they assume are obvious. Ask anyway. |
+| "I can infer the requirements" | Inferred requirements are assumptions. Validate them in Phase 1. |
 
 **If you catch yourself thinking any of these: STOP. Follow the pipeline.**
 
@@ -48,9 +50,12 @@ Visual-first, low-friction brainstorming. Show approaches with diagrams, compare
 
 ```
 ┌─────────────┐      ┌─────────────────────┐      ┌─────────────┐
-│  UNDERSTAND │ ───▶ │  EXPLORE & COMPARE  │ ───▶ │   DESIGN    │
-│  (clarify)  │      │  (options + scores) │      │  (build it) │
+│  PHASE 1    │ ───▶ │  PHASE 2            │ ───▶ │  PHASE 3    │
+│  UNDERSTAND │      │  EXPLORE & COMPARE  │      │  DESIGN     │
+│  (clarify)  │      │  (options + scores)  │      │  (build it) │
 └─────────────┘      └─────────────────────┘      └─────────────┘
+     ▲                                                   │
+     └───── Return here if assumptions surface ──────────┘
 ```
 
 ---
@@ -66,6 +71,17 @@ Visual-first, low-friction brainstorming. Show approaches with diagrams, compare
 3. Confirm: purpose, constraints, who it's for
 
 *Do not proceed to Phase 2 until you have complete clarity on goals, constraints, and requirements.*
+
+<GATE exit="phase-1">
+STOP. Before showing ANY approaches, diagrams, or options, verify ALL of these:
+- You asked at least ONE clarifying question and the user answered it
+- You know the PURPOSE of what is being built
+- You know the CONSTRAINTS (time, tech, scope)
+- You know WHO this is for
+
+If ANY of these are missing, stay in Phase 1. Ask another question.
+Do NOT show approaches, score tables, or diagrams until this gate is satisfied.
+</GATE>
 
 ---
 
@@ -129,6 +145,17 @@ Critique all approaches together using three lenses:
 
 *User approves or requests adjustments. Loop until approved.*
 
+<GATE exit="phase-2">
+STOP. Before designing anything, verify ALL of these:
+- You showed at least 3 approaches with diagrams
+- You presented a score table comparing all approaches
+- You gave a recommendation with reasoning
+- The user explicitly approved an approach
+
+If the user has NOT approved, wait. Do NOT proceed to Phase 3.
+If you skipped diagrams or the score table, go back and show them.
+</GATE>
+
 ### Before Design — Clarify the Chosen Approach:
 
 Once user approves an approach, check for **approach-specific questions** not yet answered:
@@ -145,6 +172,15 @@ Once user approves an approach, check for **approach-specific questions** not ye
 ## Phase 3: Design
 
 **Goal**: Present the approved approach with enough detail to build.
+
+<GATE exit="phase-3">
+STOP. Before writing ANY code, scaffolding, or invoking implementation tools, verify:
+- You completed Phase 1 (questions asked and answered)
+- You completed Phase 2 (approaches compared, user approved one)
+- You are about to present the design, NOT implement it
+
+This gate applies regardless of project size or perceived simplicity.
+</GATE>
 
 ### 1. Complete Architecture Diagram
 
@@ -258,6 +294,7 @@ Risk: Stale content, less control
 | Over-engineering the design | YAGNI applies. Design what's needed, not what might be needed. |
 | Ignoring team constraints | "Best" technically ≠ best for this team. Include capability in scoring. |
 | Long paragraphs instead of diagrams | If you're writing >3 sentences, you probably need a diagram instead. |
+| Showing approaches without asking questions | Phase 1 exists for a reason. You cannot skip it, even if the task seems clear. |
 
 ---
 
