@@ -42,6 +42,45 @@ You receive:
 
 ## Enforcement Rules
 
+### Permissiveness Tiers
+
+Not all projects are equal. Some have operational complexity that legitimately requires longer docs. Before auditing, **classify the project into a tier** based on objective criteria.
+
+#### Tier Classification
+
+CLAUDE.md and README.md have **fixed limits** regardless of tier — they have a specific purpose and shape. Tiers only affect other documentation files (manuals, guides, deep-dives in `docs/`).
+
+| Tier | Other MD Limit | Criteria (must meet ANY) |
+|------|----------------|--------------------------|
+| **Standard** | 300 lines | Default. Most projects. |
+| **Elevated** | 500 lines | See qualifying criteria below |
+| **Critical** | 700 lines | See qualifying criteria below |
+
+#### Qualifying Criteria for Elevated
+
+A project qualifies for **Elevated** if it meets ANY of:
+- Has a `docker-compose.yml` or `Dockerfile` with custom orchestration commands
+- Has multiple deployment environments (dev/staging/prod) with different commands
+- Has a `Makefile` with 10+ targets
+- Contains domain-specific formulas, calculations, or business rules that Claude cannot infer from code alone
+- Has multiple subsystems (frontend + backend + infra) in a monorepo
+
+#### Qualifying Criteria for Critical
+
+A project qualifies for **Critical** if it meets ANY of:
+- Operates on live systems where mistakes have real-world consequences (trading, payments, production infra)
+- Has safety-critical operational procedures (specific command ordering, circuit breakers, state management)
+- Has multiple CLAUDE.md files across subdirectories (monorepo with independent subsystems)
+- Manages real money, real users, or real infrastructure with no undo
+
+#### Tier Rules
+
+1. **Always classify first.** Before checking any limits, determine the tier. State it in the report.
+2. **Tier does NOT excuse bloat.** Even Critical docs must pass the content test: "Would removing this cause a costly mistake?" The bar is just higher for what counts as "costly."
+3. **Higher-tier docs get stricter structure requirements.** Longer docs MUST use clear sections with headers. No walls of text. If a section exceeds 50 lines, it should be its own file.
+4. **Tier is determined by project reality, not by developer preference.** A TODO app doesn't get Critical tier just because someone wrote a lot of docs.
+5. **CLAUDE.md and README.md are never affected by tiers.** Their limits are always 200 and 150 lines respectively.
+
 ### CLAUDE.md
 
 | Rule | Limit | Action if violated |
@@ -70,6 +109,7 @@ You receive:
 - Architecture details → `docs/ARCHITECTURE.md`
 - Domain workflows → a skill in `.claude/skills/`
 - Nothing (standard practices Claude already knows) → delete entirely
+- **CLAUDE.md limit is always 200 lines** — extract excess to `docs/` where tiers give more room
 
 ### README.md
 
@@ -88,7 +128,7 @@ You receive:
 | `docs/plans/*.md` referencing completed work | Flag as stale — suggest archiving or deletion |
 | Duplicate content across files | Flag — content should live in ONE place |
 | References to deleted files/functions | Flag as stale |
-| Files over 300 lines | Flag — suggest splitting |
+| Files over tier limit (300/500/700 lines) | Flag — suggest splitting |
 
 ### Structural Rules
 
@@ -143,8 +183,9 @@ Each phase MUST be completed before moving to the next. Do not skip phases. Do n
 3. Build inventory: `{path, lines, location, last_modified}`
 4. Read CLAUDE.md and README.md fully
 5. If a plan was the trigger, read the plan file
+6. **Classify the project tier** — check for Docker/Makefile complexity, live systems, monorepo structure, domain-specific rules. Apply the qualifying criteria strictly.
 
-**Exit:** Complete inventory of all `.md` files with metrics.
+**Exit:** Complete inventory of all `.md` files with metrics. Tier determined.
 
 <GATE exit="phase-1">
 STOP. Verify ALL before proceeding:
@@ -152,6 +193,7 @@ STOP. Verify ALL before proceeding:
 - [ ] CLAUDE.md and README.md read in full
 - [ ] Plan file read (if plan was the trigger)
 - [ ] Inventory is complete with line counts and locations
+- [ ] Project tier classified with justification
 
 If ANY are missing, stay in Phase 1.
 </GATE>
@@ -163,12 +205,12 @@ If ANY are missing, stay in Phase 1.
 **Entry:** Phase 1 GATE passed. Inventory is complete.
 
 **Actions:**
-1. **CLAUDE.md** — check against all CLAUDE.md rules:
+1. **CLAUDE.md** — check against all CLAUDE.md rules (fixed limits, not tier-affected):
    - Line count vs 200 limit
    - Line width vs 120 char limit (use Bash: `awk 'length > 120' CLAUDE.md`)
    - Content test: flag lines that are standard practices, file descriptions, or long explanations
    - Check for architecture diagrams, API docs, tutorials that should be elsewhere
-2. **README.md** — check against README rules:
+2. **README.md** — check against README rules (fixed limits, not tier-affected):
    - Line count vs 150 limit
    - Required sections present
    - No implementation details or AI instructions
@@ -244,6 +286,7 @@ If ANY are missing, stay in Phase 3.
 ## 📄 Doc Keeper Report
 
 **Project:** [name]
+**Tier:** [Standard / Elevated / Critical] — [1-line justification]
 **Trigger:** [plan executed / batch completed / health check]
 **Files audited:** [count] | **Total lines:** [count]
 
@@ -255,7 +298,7 @@ If ANY are missing, stay in Phase 3.
 |------|-------|-------|--------|
 | CLAUDE.md | N | 200 | ✅ / ⚠️ OVER by N |
 | README.md | N | 150 | ✅ / ⚠️ OVER by N |
-| docs/X.md | N | 300 | ✅ / ⚠️ OVER by N |
+| docs/X.md | N | [tier limit: 300/500/700] | ✅ / ⚠️ OVER by N |
 
 ### 🗑️ Trim / Move / Delete
 
