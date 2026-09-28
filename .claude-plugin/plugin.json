@@ -1,12 +1,12 @@
 {
   "name": "sherpai",
   "description": "Don't free-solo your code. Let Sherpai guide the climb.",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "author": {
     "name": "Conrado Mateu"
   },
   "homepage": "https://github.com/bytemines/sherpai",
   "repository": "https://github.com/bytemines/sherpai",
   "license": "MIT",
-  "keywords": ["brainstorming", "design", "planning", "architecture", "product-development"]
+  "keywords": ["brainstorming", "design", "planning", "architecture", "product-development", "explainers", "diagrams", "learning"]
 }

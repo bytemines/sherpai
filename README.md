@@ -73,6 +73,16 @@ flowchart LR
 - **Analogy Lens** - What do similar systems teach us?
 - **Domain Knowledge** - What do experts know about this space?
 
+### Digest (readable-explainers + explanatory-visuals)
+
+Turn any topic, URL or file into an explainer you actually remember: claim headings, guess-first questions, retrieval checks, an end quiz, and mechanism figures with numbered steps. Two evidence-based skills do the work: **readable-explainers** handles the words and **explanatory-visuals** handles the figures. Both also trigger on their own.
+
+```
+/sherpai:digest how HTTPS works
+/sherpai:digest raft consensus; paxos; CRDTs          # one explainer each, in parallel
+/sherpai:digest postgres MVCC; mysql InnoDB --compare  # one combined comparison
+```
+
 ## Installation
 
 ### Claude Code (Recommended)
