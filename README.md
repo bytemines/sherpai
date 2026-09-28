@@ -81,6 +81,7 @@ Turn any topic, URL or file into an explainer you actually remember: claim headi
 /sherpai:digest how HTTPS works
 /sherpai:digest raft consensus; paxos; CRDTs          # one explainer each, in parallel
 /sherpai:digest postgres MVCC; mysql InnoDB --compare  # one combined comparison
+/sherpai:digest kubernetes networking --glossary      # adds a linked glossary
 ```
 
 ## Installation

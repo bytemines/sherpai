@@ -1,7 +1,7 @@
 ---
 name: digest
 description: "Use when the user runs /digest, or asks for a digest, explainer or learning page on one or more topics, URLs or files (\"digest X\", \"explain these 3 things\", \"make me a study page on Y\", \"compare A vs B so I remember it\"). Do NOT use for a quick chat answer, or for polishing a single existing figure (use explanatory-visuals alone)."
-argument-hint: "<topic | url | file> [; <topic> ...] [--compare]"
+argument-hint: "<topic | url | file> [; <topic> ...] [--compare] [--glossary]"
 ---
 
 # Digest
@@ -19,6 +19,7 @@ Load both skills before writing anything. They are the spec; this skill only orc
 - Split on `;` or newlines. Each item is a topic, a URL, or a local file path.
 - Nothing given → ask for the topic(s) and stop.
 - `--compare` (or the user asks to compare) → one combined explainer that contrasts the topics: side-by-side / 2×2 figures, a mixed quiz that makes the reader tell them apart. Otherwise each topic gets its own explainer.
+- `--glossary` (or the user asks for one) → add a glossary to each explainer (see step 3). Off by default.
 
 ## 2. Gather sources
 
@@ -28,6 +29,13 @@ Load both skills before writing anything. They are the spec; this skill only orc
 ## 3. Build each explainer
 
 Follow the readable-explainers **Process** end to end (one idea, 3–7 memorable facts, reader profile → advance organizer → cast of characters → shared unit skeleton → end quiz + spacing prompt). Every mechanism unit gets a figure built with explanatory-visuals and passes its checklist.
+
+**Glossary (only with `--glossary`).** It supplements inline definitions, never replaces them: every term is still defined in the sentence where it first appears. Then:
+- A `## Glossary` section at the end (before sources), alphabetical, one line per term: **term** — plain-language definition in ≤ 20 words, plus a link back to the section where it first appears.
+- Include every term bolded as a first-use key term and every cast-of-characters part; skip everyday words.
+- Link each first-use term in the body to its glossary entry (e.g. a hover/tap tooltip with the same definition), so readers never have to scroll away to look something up.
+- Reuse the figure icons from the cast of characters next to their glossary entries.
+- In `--compare` mode, one shared glossary; mark terms that mean different things in each topic.
 
 Output one self-contained HTML page per explainer (inline SVG, no external assets beyond fonts):
 - Artifact/publish tool available → publish it and return the link.
